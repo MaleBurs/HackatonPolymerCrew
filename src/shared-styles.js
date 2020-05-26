@@ -16,11 +16,10 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
     <style>
       .card {
         margin: 24px;
-        padding: 16px;
+        padding: 50px;
         color: #757575;
         border-radius: 5px;
         background-color: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
       }
 
       .circle {
@@ -39,10 +38,6 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         margin: 16px 0;
         color: #212121;
         font-size: 22px;
-      }
-      paper-button.button {
-        background: #4285f4;
-        color: white;
       }
     </style>
   </template>

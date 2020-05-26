@@ -47,10 +47,20 @@ class MyApp extends PolymerElement {
         app-drawer-layout:not([narrow]) [drawer-toggle] {
           display: none;
         }
-
+         app-drawer-layout{
+           background-color:#fbf5fa;
+        }
         app-header {
-          color: #fff;
-          background-color: var(--app-primary-color);
+          color: #f47a20;
+          background-color: white;
+
+          border-bottom-style:solid;
+          border-bottom-color: #b26aac;
+          border-width: 1px;
+
+          text-transform: uppercase;
+          letter-spacing: 1.7px;
+        
         }
 
         app-header paper-icon-button {
@@ -72,6 +82,10 @@ class MyApp extends PolymerElement {
         .drawer-list a.iron-selected {
           color: black;
           font-weight: bold;
+        }
+
+        a.login{
+          margin-top:10px;
         }
       </style>
 
@@ -107,7 +121,7 @@ class MyApp extends PolymerElement {
         <!-- Main content -->
         <app-header-layout has-scrolling-region="">
 
-          <app-header slot="header" condenses="" reveals="" effects="waterfall">
+          <app-header class="headerBar" slot="header" condenses="" reveals="" effects="waterfall">
             <app-toolbar>
               <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
               <div main-title="">3Deseos</div>
