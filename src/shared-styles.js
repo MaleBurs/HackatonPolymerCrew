@@ -40,6 +40,10 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         color: #212121;
         font-size: 22px;
       }
+      paper-button.button {
+        background: #4285f4;
+        color: white;
+      }
     </style>
   </template>
 </dom-module>`;
