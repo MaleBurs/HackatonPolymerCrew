@@ -24,13 +24,64 @@ class MyLogin extends PolymerElement {
 
       <div class="card">
         <h1>Ingresar</h1>
-        <paper-input style='input' name='username' type="email" focused='true' label='Ingrese su email' ></paper-input>
+        <paper-input
+          style='input'
+          name='username'
+          type="email"
+          focused='true'
+          label='Ingrese su email'
+          value='{{username::input}}'>
+        </paper-input>
         <br>
-        <paper-input style='input' type='password' label='Ingrese su contraseña'></paper-input>
+        <paper-input
+          style='input'
+          type='password'
+          label='Ingrese su contraseña'
+          value='{{password::input}}'>
+        </paper-input>
         <br><br>
-        <paper-button raised class="button">Ingresar</paper-button>
+        <paper-button raised class="button" on-tap='submit'>Ingresar</paper-button>
       </div>
     `;
+  }
+
+  static get properties() {
+    return {
+      isLoggedIn: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+
+  submit(){
+      console.log("requestSent");
+      var xhr = new XMLHttpRequest();
+      var url = "http://tresdeseos.input-data.com/iniciarsesion";
+      var request = {
+        username : this.username,
+        password : this.password
+      }
+      var that=this;
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+              var groups = JSON.parse(xhr.responseText);
+              console.log("Recibi informacion!")
+              //TODO recibir info
+              /*
+              that.set('username', username);
+              that.set('password', password);
+              */
+          }
+      };
+      var data = JSON.stringify({request});
+      xhr.send(data);
+  }
+
+  getResponse(){
+    console.log("Got Response");
   }
 }
 

@@ -44,6 +44,9 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         background: #4285f4;
         color: white;
       }
+      paper-input.input {
+        padding-left: 150px; /*Esto No anda*/
+      }
     </style>
   </template>
 </dom-module>`;
