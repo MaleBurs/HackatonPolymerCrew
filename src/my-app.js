@@ -23,6 +23,7 @@ import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/paper-button/paper-button.js';
 import '@polymer/paper-input/paper-input.js';
+import '@polymer/iron-ajax/iron-ajax.js';
 import './my-icons.js';
 
 // Gesture events like tap and track generated from touch will not be

@@ -39,6 +39,16 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         color: #212121;
         font-size: 22px;
       }
+<<<<<<< HEAD
+=======
+      paper-button.button {
+        background: #4285f4;
+        color: white;
+      }
+      paper-input {
+        padding-left: 150px; /*Esto No anda*/
+      }
+>>>>>>> 5e7c48cb7afcfa2c54a8d20c8f23d3ea691325a6
     </style>
   </template>
 </dom-module>`;
