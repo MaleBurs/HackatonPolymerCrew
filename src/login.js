@@ -48,13 +48,57 @@ class MyLogin extends PolymerElement {
         data="{{isLoggedIn}}">
       </app-localstorage-document>
 
+      <paper-dialog id=confirmationDialog entry-animation="scale-up-animation"
+              exit-animation="fade-out-animation">
+        Te enviamos un mail de confirmación a {{NewUsername}}
+        <paper-button raised class="buttonLogin" on-tap='_closeConfirmDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
+      </paper-dialog>
+
+      <paper-dialog id=errorDialog entry-animation="scale-up-animation"
+              exit-animation="fade-out-animation">
+        Los datos ingresados no son correctos.
+        <paper-button raised class="buttonLogin" on-tap='_closeErrorDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
+      </paper-dialog>
+
+      <paper-dialog id=registerDialog entry-animation="scale-up-animation"
+              exit-animation="fade-out-animation">
+        <paper-input
+          class='data'
+          style='data'
+          name='username'
+          type='email'
+          focused='true'
+          label='Ingrese su email'
+          value='{{NewUsername::input}}'>
+        </paper-input>
+        <br>
+        <paper-input
+          class='data'
+          style='data'
+          type='password'
+          label='Ingrese su contraseña'
+          value='{{NewPassword::input}}'>
+        </paper-input>
+        <br>
+        <paper-input
+          class='data'
+          style='data'
+          type='password'
+          label='Ingrese su contraseña'
+          value='{{NewPasswordConfirm::input}}'>
+        </paper-input>
+        <br><br>
+        <paper-button raised class="buttonLogin" on-tap='_register'><img class="imagenRegalo" src="./images/present.png"/>Registrarse</paper-button>
+      </paper-dialog>
+
+
       <div class="card">
         <h1>Ingresar</h1>
         <paper-input
           class='data'
           style='data'
           name='username'
-          type="email"
+          type='email'
           focused='true'
           label='Ingrese su email'
           value='{{username::input}}'>
@@ -68,6 +112,7 @@ class MyLogin extends PolymerElement {
           value='{{password::input}}'>
         </paper-input>
         <br><br>
+        <paper-button raised class="buttonLogin" on-tap='_openRegisterDialog'><img class="imagenRegalo" src="./images/present.png"/>Registrarse</paper-button>
         <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
 
       </div>
@@ -76,7 +121,9 @@ class MyLogin extends PolymerElement {
 
   static get properties() {
     return {
-
+      NewUsername:String,
+      NewPassword:String,
+      NewPasswordConfirm:String
     };
   }
 
@@ -98,6 +145,28 @@ class MyLogin extends PolymerElement {
       };
       var data = JSON.stringify({request});
       xhr.send(data);
+  }
+
+  _openRegisterDialog(){
+    this.$.registerDialog.open();
+  }
+
+  _register(){
+    if(this.$.NewPassword==this.$.NewPasswordConfirm&&this.$.NewUsername!=null&&this.$.NewPassword!=null){
+      // TODO: Crear nuevo usuario en DB
+    this.$.registerDialog.close();
+    this.$.confirmationDialog.open();
+  }
+    else
+      this.$.errorDialog.open();
+  }
+
+  _closeConfirmDialog(){
+    this.$.confirmationDialog.close();
+  }
+
+  _closeErrorDialog(){
+    this.$.errorDialog.close();
   }
 
 }

@@ -27,6 +27,9 @@
  import './my-icons.js';
  import './shared-styles.js';
  import '@polymer/app-storage/app-localstorage/app-localstorage-document.js';
+ import '@polymer/paper-dialog/paper-dialog.js';
+ import '@polymer/neon-animation/animations/scale-up-animation.js';
+ import '@polymer/neon-animation/animations/fade-out-animation.js';
  // Gesture events like tap and track generated from touch will not be
  // preventable, allowing for better scrolling performance.
  setPassiveTouchGestures(true);
@@ -169,6 +172,7 @@
    static get observers() {
      return [
        '_routePageChanged(routeData.page)',
+       '_loginStatusChanged(isLoggedIn)'
      ];
    }
 
@@ -192,6 +196,15 @@
      */
 
      // TODO:  Ver si se puede salvar el error
+   }
+
+   changeRoute() {
+     var $router = this.shadowRoot.querySelector("app-location");
+     $router.path = "/view1";
+   }
+
+   _loginStatusChanged(isLoggedIn){
+     this.changeRoute();
    }
 
    _pageChanged(page) {
