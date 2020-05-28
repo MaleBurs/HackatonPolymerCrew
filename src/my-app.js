@@ -110,8 +110,8 @@
            <app-toolbar class="menu">Menu</app-toolbar>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
              <a class="textMenu" name="view1" href="[[rootPath]]view1">3Deseos</a>
-             <a class="textMenu" name="login" href="[[rootPath]]login">Regalar</a>
-             <a class="textMenu" name="view3" href="[[rootPath]]view3">Mi Perfil</a>
+             <a class="textMenu" name="regalar" href="[[rootPath]]regalar">Regalar</a>
+             <a class="textMenu" name="miPerfil" href="[[rootPath]]miPerfil">Mi Perfil</a>
            </iron-selector>
            <img class="fondoDeTres" src="./images/background.png">
          </app-drawer>
@@ -148,7 +148,8 @@
            <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
              <my-view1 name="view1"></my-view1>
              <my-login name="login"></my-login>
-             <my-view3 name="view3"></my-view3>
+             <my-regalar name="regalar"></my-regalar>
+             <mi-perfil name="miPerfil"></mi-perfil>
              <my-view404 name="view404"></my-view404>
            </iron-pages>
          </app-header-layout>
@@ -186,7 +187,7 @@
       // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
      if (!page) {
        this.page = 'view1';
-     } else if (['view1', 'login', 'view3'].indexOf(page) !== -1) {
+     } else if (['view1', 'login', 'regalar','miPerfil'].indexOf(page) !== -1) {
        this.page = page;
      } else {
        this.page = 'view404';
@@ -210,8 +211,11 @@
        case 'login':
          import('./login.js');
          break;
-       case 'view3':
-         import('./my-view3.js');
+       case 'regalar':
+         import('./regalar.js');
+         break;
+       case 'miPerfil':
+         import('./miPerfil.js');
          break;
        case 'view404':
          import('./my-view404.js');
