@@ -43,9 +43,10 @@ class MyLogin extends PolymerElement {
 
       </style>
 
-      <iron-localstorage name="my-app-storage"
-        value="{{storage}}">
-      </iron-localstorage>
+      <app-localstorage-document
+        key="isLoggedIn"
+        data="{{isLoggedIn}}">
+      </app-localstorage-document>
 
       <div class="card">
         <h1>Ingresar</h1>
@@ -92,7 +93,7 @@ class MyLogin extends PolymerElement {
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
               var reply = JSON.parse(xhr.responseText);
-              that.set('storage.isLoggedIn', reply);
+              that.set('isLoggedIn', reply);
           }
       };
       var data = JSON.stringify({request});

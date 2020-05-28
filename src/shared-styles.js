@@ -195,6 +195,13 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         background-color:red;
       }
 
+      paper-button.logout{
+        margin-left: auto;
+        margin-right: 0;
+        height: auto;
+        width: auto;
+      }
+
     </style>
   </template>
 </dom-module>`;

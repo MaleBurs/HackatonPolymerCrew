@@ -26,7 +26,7 @@
  import '@polymer/iron-ajax/iron-ajax.js';
  import './my-icons.js';
  import './shared-styles.js';
- import '@polymer/iron-localstorage/iron-localstorage.js';
+ import '@polymer/app-storage/app-localstorage/app-localstorage-document.js';
  // Gesture events like tap and track generated from touch will not be
  // preventable, allowing for better scrolling performance.
  setPassiveTouchGestures(true);
@@ -91,10 +91,10 @@
         }
       </style>
 
-      <iron-localstorage name="my-app-storage"
-        value="{{storage}}"
-        on-iron-localstorage-load-empty="initializeStorage">
-      </iron-localstorage>
+      <app-localstorage-document
+        key="isLoggedIn"
+        data="{{isLoggedIn}}">
+      </app-localstorage-document>
 
        <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
        </app-location>
@@ -105,7 +105,7 @@
 
        <app-drawer-layout fullbleed="" narrow="{{narrow}}">
          <!-- Drawer content -->
-         <template is=dom-if if='{{storage.isLoggedIn}}'>
+         <template is=dom-if if='{{isLoggedIn}}'>
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
            <app-toolbar class="menu">Menu</app-toolbar>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
@@ -117,7 +117,7 @@
          </app-drawer>
          </template>
 
-         <template is=dom-if if='{{!storage.isLoggedIn}}'>
+         <template is=dom-if if='{{!isLoggedIn}}'>
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
            <app-toolbar class="menu">Menu</app-toolbar>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
@@ -125,7 +125,6 @@
              <a class="textMenu" name="login" href="[[rootPath]]login">Ingresar</a>
            </iron-selector>
            <img class="fondoDeTres" src="./images/background.png">
-           isLoggedIn = {{isLoggedIn}}
          </app-drawer>
          </template>
 
@@ -142,6 +141,7 @@
                  <div id="purple2"></div>
                  <div id="orange"></div>
                </div>
+               <paper-button class='logout' hidden$="{{!isLoggedIn}}" on-tap='logout'>Cerrar Sesión</paper-button>
              </app-toolbar>
            </app-header>
 
@@ -169,8 +169,7 @@
          type: Boolean,
          value: false,
          notify: true
-       },
-       storage: Object
+       }
      };
    }
 
@@ -224,10 +223,9 @@
      console.log("Login status changed to "+status+" Seen in OBSERVER")
    }
 
-   initializeStorage(){
-     this.storage = {
-       isLoggedIn : false
-     }
+
+   logout(){
+     this.isLoggedIn=false;
    }
 
  }
