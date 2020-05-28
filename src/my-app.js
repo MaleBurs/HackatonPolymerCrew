@@ -102,7 +102,6 @@
        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
        </app-route>
 
-       <login>{{isLoggedIn}}</login>
 
        <app-drawer-layout fullbleed="" narrow="{{narrow}}">
          <!-- Drawer content -->
@@ -115,7 +114,6 @@
              <a class="textMenu" name="view3" href="[[rootPath]]view3">Mi Perfil</a>
            </iron-selector>
            <img class="fondoDeTres" src="./images/background.png">
-           isLoggedIn = {{storage.isLoggedIn}}
          </app-drawer>
          </template>
 
