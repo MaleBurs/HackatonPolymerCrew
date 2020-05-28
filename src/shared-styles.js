@@ -189,6 +189,12 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         width:200px;
       }
 
+      --paper-input-container-underline-focus: { display: none; };
+
+      paper-input.data: active{
+        background-color:red;
+      }
+
     </style>
   </template>
 </dom-module>`;

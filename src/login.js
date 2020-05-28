@@ -21,21 +21,53 @@ class MyLogin extends PolymerElement {
         }
         h1{
           letter-spacing: 1.3px;
-          color:#b26aac;
-          font-size: 20px;
         }
+        paper-button.buttonLogin{
+          border-radius:5px;
+          background-color: #b27aac;
+          color: #fff;
+          cursor: pointer
+
+          letter-spacing: 1.3px;
+          font-weight: 450;
+          font-size: 14px;
+
+          height: 45px;
+          width: 115px;
+          float: right;
+          position: relative;
+          top: -10px;
+        }
+
+        /* Reset some defaults */
+
       </style>
 
-      <div class="card">
-        <h1>Ingresa y saca una sonrisa</h1>
+      <iron-localstorage name="my-app-storage"
+        value="{{storage}}">
+      </iron-localstorage>
 
-        <paper-input class="custom" style='data' name='username' type="email" focused='true' label='Ingrese su email' value='{{username::input}}'>
+      <div class="card">
+        <h1>Ingresar</h1>
+        <paper-input
+          class='data'
+          style='data'
+          name='username'
+          type="email"
+          focused='true'
+          label='Ingrese su email'
+          value='{{username::input}}'>
         </paper-input>
         <br>
-        <paper-input class="custom" style='data' type='password' label='Ingrese su contraseña' value='{{password::input}}'>
+        <paper-input
+          class='data'
+          style='data'
+          type='password'
+          label='Ingrese su contraseña'
+          value='{{password::input}}'>
         </paper-input>
         <br><br>
-        <paper-button raised class="button" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
+        <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
 
       </div>
     `;
@@ -43,15 +75,11 @@ class MyLogin extends PolymerElement {
 
   static get properties() {
     return {
-      isLoggedIn: {
-        type: Boolean,
-        value: false
-      }
+
     };
   }
 
   submit(){
-      console.log("requestSent");
       var xhr = new XMLHttpRequest();
       var url = "http://localhost:3000/api/login";
       var request = {
@@ -63,22 +91,14 @@ class MyLogin extends PolymerElement {
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
-              var groups = JSON.parse(xhr.responseText);
-              console.log("Recibi informacion!")
-              //TODO recibir info
-              /*
-              that.set('username', username);
-              that.set('password', password);
-              */
+              var reply = JSON.parse(xhr.responseText);
+              that.set('storage.isLoggedIn', reply);
           }
       };
       var data = JSON.stringify({request});
       xhr.send(data);
   }
 
-  getResponse(){
-    console.log("Got Response");
-  }
 }
 
 window.customElements.define('my-login', MyLogin);

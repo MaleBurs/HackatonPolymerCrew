@@ -26,6 +26,7 @@
  import '@polymer/iron-ajax/iron-ajax.js';
  import './my-icons.js';
  import './shared-styles.js';
+ import '@polymer/iron-localstorage/iron-localstorage.js';
  // Gesture events like tap and track generated from touch will not be
  // preventable, allowing for better scrolling performance.
  setPassiveTouchGestures(true);
@@ -38,7 +39,6 @@
    static get template() {
      return html`
        <style include="shared-styles">
-       <style>
         :host {
           --app-primary-color: #4285f4;
           --app-secondary-color: black;
@@ -91,15 +91,21 @@
         }
       </style>
 
+      <iron-localstorage name="my-app-storage"
+        value="{{storage}}"
+        on-iron-localstorage-load-empty="initializeStorage">
+      </iron-localstorage>
+
        <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
        </app-location>
 
        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
        </app-route>
 
+
        <app-drawer-layout fullbleed="" narrow="{{narrow}}">
          <!-- Drawer content -->
-         <template is=dom-if if='{{isLoggedIn}}'>
+         <template is=dom-if if='{{storage.isLoggedIn}}'>
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
            <app-toolbar class="menu">Menu</app-toolbar>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
@@ -111,7 +117,7 @@
          </app-drawer>
          </template>
 
-         <template is=dom-if if='{{!isLoggedIn}}'>
+         <template is=dom-if if='{{!storage.isLoggedIn}}'>
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
            <app-toolbar class="menu">Menu</app-toolbar>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
@@ -119,6 +125,7 @@
              <a class="textMenu" name="login" href="[[rootPath]]login">Ingresar</a>
            </iron-selector>
            <img class="fondoDeTres" src="./images/background.png">
+           isLoggedIn = {{isLoggedIn}}
          </app-drawer>
          </template>
 
@@ -160,14 +167,16 @@
        subroute: Object,
        isLoggedIn: {
          type: Boolean,
-         value: false
-       }
+         value: false,
+         notify: true
+       },
+       storage: Object
      };
    }
 
    static get observers() {
      return [
-       '_routePageChanged(routeData.page)'
+       '_routePageChanged(routeData.page)',
      ];
    }
 
@@ -210,6 +219,17 @@
          break;
      }
    }
+
+   _loginStatusChanged(status){
+     console.log("Login status changed to "+status+" Seen in OBSERVER")
+   }
+
+   initializeStorage(){
+     this.storage = {
+       isLoggedIn : false
+     }
+   }
+
  }
 
  window.customElements.define('my-app', MyApp);
