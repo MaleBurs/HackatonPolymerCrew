@@ -14,65 +14,6 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<dom-module id="shared-styles">
   <template>
     <style>
-     h1 {
-        margin: 16px 0;
-        color: #212121;
-        font-size: 22px;
-      }
-
-      paper-input {
-        padding-left: 10px; /*Esto No anda*/
-      }
-      paper-input.custom {
-          --paper-input-container-underline-focus: { display: none; };
-          --paper-input-container-color:#838383;
-          --paper-input-container-focus-color:#f47a20;
-          --paper-input-container-input-color: black;
-          --paper-input-container-invalid-color:#b26aac;
-      }
-
-      paper-button.button{
-        border-radius:4px;
-        background-color: #f47a20;
-        color: black;
-        cursor: pointer;
-
-        font-feature-settings: "liga" 0;
-        letter-spacing: 1.6px;
-        font-weight: 380;
-        font-size: 15px;
-        text-transform: capitalize;
-
-        height: 45px;
-        width: 113px;
-        float: right;
-        position: relative;
-        padding:5px;
-        top: -10px;
-      }
-
-      div.card{
-        margin: 24px;
-        padding: 60px;
-        color: #757575;
-        border-radius: 5px;
-        background-color: #fff;
-
-        height:280px;
-        width: 63%;
-        display: block;
-
-        top:30px;
-        position:relative;
-        margin-left: auto;
-        margin-right: auto;
-
-        box-shadow: -4px 7px 14px 8px rgba(249,241,247,0.89);
-      }
-      app-toolbar.menu{
-        background-color:#f47a20;
-      }
-
       .circle {
         display: inline-block;
         width: 64px;
@@ -84,12 +25,6 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         font-size: 30px;
         line-height: 64px;
       }
-
-      .imagenRegalo{
-          height:20px;
-          margin-right:6px;
-        }
-
     :host {
         --app-secondary-color: black;
 
@@ -112,7 +47,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 
         text-transform: uppercase;
         letter-spacing: 1.7px;
-
+      
       }
 
       app-header paper-icon-button {
@@ -152,7 +87,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
           background-repeat: repeat-x;
           position: absolute;
       }
-
+       
       #orange {
           background-color: #f47a20;
           display: inline-table;
@@ -171,7 +106,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
           background-repeat: repeat-x;
           position: absolute;
       }
-
+       
       #orange2 {
           background-color: #f47a20;
           display: inline-table;
@@ -181,25 +116,65 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
           background-repeat: repeat-x;
           position: absolute;
       }
-
+      app-toolbar.menu{
+        background-color:#f47a20;
+      }
       .fondoDeTres{
         left:55px;
         bottom: 120px;
         position: absolute;
         width:200px;
       }
+       paper-button.buttonLogin{
+        border-radius:4px;
+        background-color: #f47a20;
+        color: black;
+        cursor: pointer;
 
-      --paper-input-container-underline-focus: { display: none; };
+        font-feature-settings: "liga" 0;
+        letter-spacing: 1.6px;
+        font-weight: 380;
+        font-size: 15px;
+        text-transform: capitalize;
 
-      paper-input.data: active{
-        background-color:red;
+        height: 45px;
+        width: 113px;
+        float: right;
+        position: relative;
+        padding:5px;
+        top: -10px;
       }
 
-      paper-button.logout{
+      div.card{
+        margin: 24px;
+        padding: 60px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+
+        height:280px;
+        width: 63%;
+        display: block;
+
+        top:30px;
+        position:relative;
         margin-left: auto;
-        margin-right: 0;
-        height: auto;
-        width: auto;
+        margin-right: auto;
+
+        box-shadow: -4px 7px 14px 8px rgba(249,241,247,0.89);
+      }
+
+      .imagenRegalo{
+        height:20px;
+        margin-right:6px;
+      }
+
+      paper-input.data {
+        --paper-input-container-underline-focus: { display: none; };
+        --paper-input-container-color:#838383;
+        --paper-input-container-focus-color:#f47a20;
+        --paper-input-container-input-color: black;
+        --paper-input-container-invalid-color:#b26aac;
       }
 
     </style>

@@ -41,51 +41,7 @@
  class MyApp extends PolymerElement {
    static get template() {
      return html`
-       <style include="shared-styles">
-        :host {
-          --app-primary-color: #4285f4;
-          --app-secondary-color: black;
-
-          display: block;
-        }
-
-        app-header {
-          color: #f47a20;
-          background-color: white;
-
-          border-bottom-style:solid;
-          border-bottom-color: #b26aac;
-          border-width: 1px;
-
-          text-transform: uppercase;
-          letter-spacing: 1.7px;
-
-        }
-
-        app-header paper-icon-button {
-          --paper-icon-button-ink-color: white;
-        }
-
-        .drawer-list {
-          margin: 0 20px;
-        }
-
-        .drawer-list a {
-          display: block;
-          padding: 0 16px;
-          text-decoration: none;
-          color: var(--app-secondary-color);
-          line-height: 40px;
-        }
-
-        .drawer-list a.iron-selected {
-          color: black;
-          font-weight: bold;
-        }
-
-        a.login{
-          margin-top:10px;
-        }
+      <style include="shared-styles">
       </style>
 
       <app-localstorage-document

@@ -19,27 +19,13 @@ class MyLogin extends PolymerElement {
           display: block;
           padding: 10px;
         }
+
         h1{
           letter-spacing: 1.3px;
+          color:#b26aac;
+          font-size: 20px;
         }
-        paper-button.buttonLogin{
-          border-radius:5px;
-          background-color: #b27aac;
-          color: #fff;
-          cursor: pointer
-
-          letter-spacing: 1.3px;
-          font-weight: 450;
-          font-size: 14px;
-
-          height: 45px;
-          width: 115px;
-          float: right;
-          position: relative;
-          top: -10px;
-        }
-
-        /* Reset some defaults */
+        
 
       </style>
 
@@ -48,44 +34,24 @@ class MyLogin extends PolymerElement {
         data="{{isLoggedIn}}">
       </app-localstorage-document>
 
-      <paper-dialog id=confirmationDialog entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
+      <paper-dialog id=confirmationDialog entry-animation="scale-up-animation" exit-animation="fade-out-animation">
         Te enviamos un mail de confirmación a {{NewUsername}}
         <paper-button raised class="buttonLogin" on-tap='_closeConfirmDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
       </paper-dialog>
 
-      <paper-dialog id=errorDialog entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
+      <paper-dialog id=errorDialog entry-animation="scale-up-animation" exit-animation="fade-out-animation">
         Los datos ingresados no son correctos.
         <paper-button raised class="buttonLogin" on-tap='_closeErrorDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
       </paper-dialog>
 
-      <paper-dialog id=registerDialog entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
-        <paper-input
-          class='data'
-          style='data'
-          name='username'
-          type='email'
-          focused='true'
-          label='Ingrese su email'
-          value='{{NewUsername::input}}'>
+      <paper-dialog id=registerDialog entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+        <paper-input class='data' style='data' name='username' type='email' focused='true' label='Ingrese su email' value='{{NewUsername::input}}'>
         </paper-input>
         <br>
-        <paper-input
-          class='data'
-          style='data'
-          type='password'
-          label='Ingrese su contraseña'
-          value='{{NewPassword::input}}'>
+        <paper-input class='data' style='data' type='password' label='Ingrese su contraseña' value='{{NewPassword::input}}'>
         </paper-input>
         <br>
-        <paper-input
-          class='data'
-          style='data'
-          type='password'
-          label='Ingrese su contraseña'
-          value='{{NewPasswordConfirm::input}}'>
+        <paper-input class='data' style='data' type='password' label='Ingrese su contraseña' value='{{NewPasswordConfirm::input}}'>
         </paper-input>
         <br><br>
         <paper-button raised class="buttonLogin" on-tap='_register'><img class="imagenRegalo" src="./images/present.png"/>Registrarse</paper-button>
@@ -94,22 +60,10 @@ class MyLogin extends PolymerElement {
 
       <div class="card">
         <h1>Ingresar</h1>
-        <paper-input
-          class='data'
-          style='data'
-          name='username'
-          type='email'
-          focused='true'
-          label='Ingrese su email'
-          value='{{username::input}}'>
+        <paper-input class='data' style='data' name='username' type='email' focused='true' label='Ingrese su email' value='{{username::input}}'>
         </paper-input>
         <br>
-        <paper-input
-          class='data'
-          style='data'
-          type='password'
-          label='Ingrese su contraseña'
-          value='{{password::input}}'>
+        <paper-input class='data' style='data' type='password' label='Ingrese su contraseña' value='{{password::input}}'>
         </paper-input>
         <br><br>
         <paper-button raised class="buttonLogin" on-tap='_openRegisterDialog'><img class="imagenRegalo" src="./images/present.png"/>Registrarse</paper-button>
