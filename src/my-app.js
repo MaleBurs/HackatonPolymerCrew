@@ -46,12 +46,6 @@
           display: block;
         }
 
-        app-drawer-layout:not([narrow]) [drawer-toggle] {
-          display: none;
-        }
-         app-drawer-layout{
-           background-color:#fbf5fa;
-        }
         app-header {
           color: #f47a20;
           background-color: white;
@@ -194,8 +188,8 @@
      }
 
      // Close a non-persistent drawer when the page & route are changed.
-     if (!this.$.drawer.persistent) {
-       this.$.drawer.close();
+     if (!this.drawer.persistent) {
+       this.drawer.close();
      }
    }
 

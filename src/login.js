@@ -82,7 +82,7 @@ class MyLogin extends PolymerElement {
 
   submit(){
       var xhr = new XMLHttpRequest();
-      var url = "http://localhost:3000/api/login";
+      var url = "http://theserver.mynetgear.com:3000/api/login";
       var request = {
         username : this.username,
         password : this.password
