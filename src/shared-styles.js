@@ -14,42 +14,24 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<dom-module id="shared-styles">
   <template>
     <style>
-      .card {
-        margin: 24px;
-        padding: 50px;
-        color: #757575;
-        border-radius: 5px;
-        background-color: #fff;
-      }
-
-      .circle {
-        display: inline-block;
-        width: 64px;
-        height: 64px;
-        text-align: center;
-        color: #555;
-        border-radius: 50%;
-        background: #ddd;
-        font-size: 30px;
-        line-height: 64px;
-      }
-
-      h1 {
+     h1 {
         margin: 16px 0;
         color: #212121;
         font-size: 22px;
       }
 
-      paper-button.button {
-        background: #4285f4;
-        color: white;
-      }
-
       paper-input {
         padding-left: 10px; /*Esto No anda*/
       }
+      paper-input.custom {
+          --paper-input-container-underline-focus: { display: none; };
+          --paper-input-container-color:#838383;
+          --paper-input-container-focus-color:#f47a20;
+          --paper-input-container-input-color: black;
+          --paper-input-container-invalid-color:#b26aac;
+      }
 
-      paper-button.buttonLogin{
+      paper-button.button{
         border-radius:4px;
         background-color: #f47a20;
         color: black;
@@ -87,19 +69,27 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 
         box-shadow: -4px 7px 14px 8px rgba(249,241,247,0.89);
       }
-
-      .imagenRegalo{
-        height:20px;
-        margin-right:6px;
+      app-toolbar.menu{
+        background-color:#f47a20;
       }
 
-      paper-input.custom {
-        --paper-input-container-underline-focus: { display: none; };
-        --paper-input-container-color:#838383;
-        --paper-input-container-focus-color:#f47a20;
-        --paper-input-container-input-color: black;
-        --paper-input-container-invalid-color:#b26aac;
-    }
+      .circle {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        text-align: center;
+        color: #555;
+        border-radius: 50%;
+        background: #ddd;
+        font-size: 30px;
+        line-height: 64px;
+      }
+
+      .imagenRegalo{
+          height:20px;
+          margin-right:6px;
+        }
+
     :host {
         --app-secondary-color: black;
 
@@ -190,9 +180,6 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
           height: 3px;
           background-repeat: repeat-x;
           position: absolute;
-      }
-      app-toolbar.menu{
-        background-color:#f47a20;
       }
 
       .fondoDeTres{

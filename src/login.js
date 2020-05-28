@@ -69,9 +69,6 @@ class MyLogin extends PolymerElement {
         <br><br>
         <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
 
-        isLoggedIn = {{isLoggedIn}}
-        <MyApp isLoggedIn={{isLoggedIn}}></MyApp>
-
       </div>
     `;
   }
@@ -95,9 +92,7 @@ class MyLogin extends PolymerElement {
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
               var reply = JSON.parse(xhr.responseText);
-              console.log(reply);
               that.set('storage.isLoggedIn', reply);
-              console.log(that.isLoggedIn);
           }
       };
       var data = JSON.stringify({request});
