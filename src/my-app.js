@@ -201,6 +201,23 @@ class MyApp extends PolymerElement {
         break;
     }
   }
-}
+     // Note: `polymer build` doesn't like string concatenation in the import
+     // statement, so break it up.
+     switch (page) {
+       case 'view1':
+         import('./my-view1.js');
+         break;
+       case 'login':
+         import('./login.js');
+         break;
+       case 'view3':
+         import('./my-view3.js');
+         break;
+       case 'view404':
+         import('./my-view404.js');
+         break;
+     }
+   }
+ }
 
-window.customElements.define('my-app', MyApp);
+ window.customElements.define('my-app', MyApp);

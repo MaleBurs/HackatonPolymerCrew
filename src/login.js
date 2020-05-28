@@ -38,7 +38,8 @@ class MyLogin extends PolymerElement {
           position: relative;
           top: -10px;
         }
-        div.card{
+
+        /*div.card{
           height:300px;
           width: 75%;
           display: block;
@@ -48,6 +49,7 @@ class MyLogin extends PolymerElement {
           margin-left: auto;
           margin-right: auto;
         }
+        */
         /* Reset some defaults */
         --paper-input-container-underline-focus: { display: none; };
 
@@ -59,15 +61,10 @@ class MyLogin extends PolymerElement {
 
       <div class="card">
         <h1>Ingresar</h1>
-<<<<<<< HEAD
-        <paper-input class="data" style='input' name='username' type="email" focused='true' label='Ingrese su email' ></paper-input>
-        <br>
-        <paper-input class="data" style='input' type='password' label='Ingrese su contraseña'></paper-input>
-        <br><br>
-        <paper-button raised class="buttonLogin">Ingresar</paper-button>
-=======
+
         <paper-input
-          style='input'
+          class='data'
+          style='data'
           name='username'
           type="email"
           focused='true'
@@ -76,14 +73,15 @@ class MyLogin extends PolymerElement {
         </paper-input>
         <br>
         <paper-input
-          style='input'
+          class='data'
+          style='data'
           type='password'
           label='Ingrese su contraseña'
           value='{{password::input}}'>
         </paper-input>
         <br><br>
-        <paper-button raised class="button" on-tap='submit'>Ingresar</paper-button>
->>>>>>> 5e7c48cb7afcfa2c54a8d20c8f23d3ea691325a6
+        <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
+
       </div>
     `;
   }
@@ -100,7 +98,7 @@ class MyLogin extends PolymerElement {
   submit(){
       console.log("requestSent");
       var xhr = new XMLHttpRequest();
-      var url = "http://tresdeseos.input-data.com/iniciarsesion";
+      var url = "http://localhost:3000/api/login";
       var request = {
         username : this.username,
         password : this.password
