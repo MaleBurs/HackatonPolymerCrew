@@ -99,28 +99,26 @@
 
        <app-drawer-layout fullbleed="" narrow="{{narrow}}">
          <!-- Drawer content -->
-         <template is=dom-if if='{{isLoggedIn}}'>
+
          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
            <app-toolbar class="menu">Menu</app-toolbar>
+           <template is=dom-if if='{{isLoggedIn}}'>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
              <a class="textMenu" name="view1" href="[[rootPath]]view1">3Deseos</a>
              <a class="textMenu" name="regalar" href="[[rootPath]]regalar">Regalar</a>
              <a class="textMenu" name="miPerfil" href="[[rootPath]]miPerfil">Mi Perfil</a>
            </iron-selector>
+           </template>
+           <template is=dom-if if='{{!isLoggedIn}}'>
+             <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+               <a class="textMenu" name="view1" href="[[rootPath]]view1">3Deseos</a>
+               <a class="textMenu" name="login" href="[[rootPath]]login">Ingresar</a>
+           </template>
            <img class="fondoDeTres" src="./images/background.png">
          </app-drawer>
-         </template>
 
-         <template is=dom-if if='{{!isLoggedIn}}'>
-         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-           <app-toolbar class="menu">Menu</app-toolbar>
-           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-             <a class="textMenu" name="view1" href="[[rootPath]]view1">3Deseos</a>
-             <a class="textMenu" name="login" href="[[rootPath]]login">Ingresar</a>
-           </iron-selector>
-           <img class="fondoDeTres" src="./images/background.png">
-         </app-drawer>
-         </template>
+
+
 
          <!-- Main content -->
          <app-header-layout has-scrolling-region="">
@@ -187,10 +185,13 @@
        this.page = 'view404';
      }
 
-     // Close a non-persistent drawer when the page & route are changed.
+     /* Close a non-persistent drawer when the page & route are changed.
      if (!this.drawer.persistent) {
        this.drawer.close();
      }
+     */
+
+     // TODO:  Ver si se puede salvar el error
    }
 
    _pageChanged(page) {
@@ -216,11 +217,6 @@
          break;
      }
    }
-
-   _loginStatusChanged(status){
-     console.log("Login status changed to "+status+" Seen in OBSERVER")
-   }
-
 
    logout(){
      this.isLoggedIn=false;
