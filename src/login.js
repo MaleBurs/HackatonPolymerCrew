@@ -39,29 +39,16 @@ class MyLogin extends PolymerElement {
           top: -10px;
         }
 
-        /*div.card{
-          height:300px;
-          width: 75%;
-          display: block;
-
-          top:30px;
-          position:relative;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        */
         /* Reset some defaults */
-        --paper-input-container-underline-focus: { display: none; };
-
-        paper-input.data: active{
-          background-color:red;
-        }
 
       </style>
 
+      <iron-localstorage name="my-app-storage"
+        value="{{storage}}">
+      </iron-localstorage>
+
       <div class="card">
         <h1>Ingresar</h1>
-
         <paper-input
           class='data'
           style='data'
@@ -82,21 +69,20 @@ class MyLogin extends PolymerElement {
         <br><br>
         <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
 
+        isLoggedIn = {{isLoggedIn}}
+        <MyApp isLoggedIn={{isLoggedIn}}></MyApp>
+
       </div>
     `;
   }
 
   static get properties() {
     return {
-      isLoggedIn: {
-        type: Boolean,
-        value: false
-      }
+
     };
   }
 
   submit(){
-      console.log("requestSent");
       var xhr = new XMLHttpRequest();
       var url = "http://localhost:3000/api/login";
       var request = {
@@ -108,22 +94,16 @@ class MyLogin extends PolymerElement {
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
-              var groups = JSON.parse(xhr.responseText);
-              console.log("Recibi informacion!")
-              //TODO recibir info
-              /*
-              that.set('username', username);
-              that.set('password', password);
-              */
+              var reply = JSON.parse(xhr.responseText);
+              console.log(reply);
+              that.set('storage.isLoggedIn', reply);
+              console.log(that.isLoggedIn);
           }
       };
       var data = JSON.stringify({request});
       xhr.send(data);
   }
 
-  getResponse(){
-    console.log("Got Response");
-  }
 }
 
 window.customElements.define('my-login', MyLogin);
