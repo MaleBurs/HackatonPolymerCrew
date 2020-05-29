@@ -195,14 +195,14 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         margin: 24px;
         padding-top: 40px;
         padding-bottom: 30px;
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
         color: #757575;
         border-radius: 5px;
         background-color: #fff;
 
         width: 85%;
-        min-height:500px;
+        min-height:550;
 
         top:90px;
         margin-left:6%;

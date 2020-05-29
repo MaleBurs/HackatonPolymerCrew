@@ -25,6 +25,24 @@ class MyLogin extends PolymerElement {
           color:#b26aac;
           font-size: 20px;
         }
+        .errorCard{
+
+          border:none;
+          border-style:solid;
+          border-width:0px;
+
+          background-color: transparent;
+          box-shadow: 0px 0px 0px 0px;
+          color: #f47a20;
+
+          position:relative;
+
+          font-size:13px;
+
+          margin-bottom:-70px;
+          margin-top:60px;
+          margin-left:0px;
+        }
 
       </style>
 
@@ -40,12 +58,6 @@ class MyLogin extends PolymerElement {
       </paper-dialog>
 
 
-      <paper-dialog id=errorDialog z-index="15;">
-        Los datos ingresados no son correctos.
-        <paper-button raised class="buttonLogin" on-tap='_closeErrorDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
-      </paper-dialog>
-
-
       <paper-dialog class="regisCard" id=registerDialog>
         <h1>La felicidad está hecha para ser compartida, registrese</h1>
         <paper-input class='data' style='data' name='username' type='email' focused='true' label='Ingrese su email' value='{{NewUsername::input}}'>
@@ -56,6 +68,7 @@ class MyLogin extends PolymerElement {
         </paper-input>
         <br>
         <paper-button raised class="buttonLogin" on-tap='_register'><img class="imagenRegalo" src="./images/celebration.png"/>Registrarse</paper-button>
+        <paper-dialog class="errorCard" id=errorDialog>Los datos ingresados no son correctos.</paper-dialog>
         <div class="txtRegis">¿Ya eres miembro?<paper-button class="buttonLink" on-tap='_closeRegisterDialog'>Iniciar Sesión</paper-button></div>
       </paper-dialog>
 
@@ -113,12 +126,27 @@ class MyLogin extends PolymerElement {
 
 
   _register(){
-    if(this.$.NewPassword==this.$.NewPasswordConfirm&&this.$.NewUsername!=null&&this.$.NewPassword!=null){
+    if(this.$.NewPassword==this.$.NewPasswordConfirm&&this.$.NewUsername!=null&&this.$.NewPassword!=null&&this.NewPasswordConfirm!=null){
       // TODO: Crear nuevo usuario en DB
     this.$.registerDialog.close();
     this.$.confirmationDialog.open();
   }
     else
+      if(this.$.NewPassword!=this.$.NewPasswordConfirm){
+        window.alert("las contraseñas son distintas");
+      }
+      if(this.$.NewUsername==null){
+        window.alert("nombreUsuario=null");
+
+      }
+      if(this.$.NewPassword==null){
+        window.alert("pass=null");
+
+      }
+      if(this.$.NewPasswordConfirm==null){
+        window.alert("passConfir=null");
+
+      }
       this.$.errorDialog.open();
   }
 
