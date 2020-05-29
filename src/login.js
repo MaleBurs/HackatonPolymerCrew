@@ -25,7 +25,6 @@ class MyLogin extends PolymerElement {
           color:#b26aac;
           font-size: 20px;
         }
-        
 
       </style>
 
@@ -34,40 +33,42 @@ class MyLogin extends PolymerElement {
         data="{{isLoggedIn}}">
       </app-localstorage-document>
 
-      <paper-dialog id=confirmationDialog entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+
+      <paper-dialog id=confirmationDialog>
         Te enviamos un mail de confirmación a {{NewUsername}}
         <paper-button raised class="buttonLogin" on-tap='_closeConfirmDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
       </paper-dialog>
 
-      <paper-dialog id=errorDialog entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+
+      <paper-dialog id=errorDialog z-index="15;">
         Los datos ingresados no son correctos.
         <paper-button raised class="buttonLogin" on-tap='_closeErrorDialog'><img class="imagenRegalo" src="./images/present.png"/>ok</paper-button>
       </paper-dialog>
 
-      <paper-dialog id=registerDialog entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+
+      <paper-dialog class="regisCard" id=registerDialog>
+        <h1>La felicidad está hecha para ser compartida, registrese</h1>
         <paper-input class='data' style='data' name='username' type='email' focused='true' label='Ingrese su email' value='{{NewUsername::input}}'>
         </paper-input>
-        <br>
         <paper-input class='data' style='data' type='password' label='Ingrese su contraseña' value='{{NewPassword::input}}'>
         </paper-input>
-        <br>
-        <paper-input class='data' style='data' type='password' label='Ingrese su contraseña' value='{{NewPasswordConfirm::input}}'>
+        <paper-input class='data' style='data' type='password' label='Ingrese su contraseña nuevamente' value='{{NewPasswordConfirm::input}}'>
         </paper-input>
-        <br><br>
-        <paper-button raised class="buttonLogin" on-tap='_register'><img class="imagenRegalo" src="./images/present.png"/>Registrarse</paper-button>
+        <br>
+        <paper-button raised class="buttonLogin" on-tap='_register'><img class="imagenRegalo" src="./images/celebration.png"/>Registrarse</paper-button>
+        <div class="txtRegis">¿Ya eres miembro?<paper-button class="buttonLink" on-tap='_closeRegisterDialog'>Iniciar Sesión</paper-button></div> 
       </paper-dialog>
 
-
       <div class="card">
-        <h1>Ingresar</h1>
+        <h1>Ingrese para sacar sorisas</h1>
         <paper-input class='data' style='data' name='username' type='email' focused='true' label='Ingrese su email' value='{{username::input}}'>
         </paper-input>
         <br>
         <paper-input class='data' style='data' type='password' label='Ingrese su contraseña' value='{{password::input}}'>
         </paper-input>
         <br><br>
-        <paper-button raised class="buttonLogin" on-tap='_openRegisterDialog'><img class="imagenRegalo" src="./images/present.png"/>Registrarse</paper-button>
         <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
+        <div class="txtRegis">¿Todavía no tienes cuenta? <paper-button class="buttonLink" on-tap='_openRegisterDialog'>Registrarse</paper-button></div> 
 
       </div>
     `;
@@ -101,9 +102,12 @@ class MyLogin extends PolymerElement {
       xhr.send(data);
   }
 
-  _openRegisterDialog(){
-    this.$.registerDialog.open();
-  }
+/*isEmail(email) {
+  var regularExp = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+  console.log(regularExp.test(email))
+  return regularExp.test(email);
+}*/
+
 
   _register(){
     if(this.$.NewPassword==this.$.NewPasswordConfirm&&this.$.NewUsername!=null&&this.$.NewPassword!=null){
@@ -121,6 +125,13 @@ class MyLogin extends PolymerElement {
 
   _closeErrorDialog(){
     this.$.errorDialog.close();
+  }
+   _openRegisterDialog(){
+    this.$.registerDialog.open();
+  }
+
+  _closeRegisterDialog(){
+    this.$.registerDialog.close();
   }
 
 }

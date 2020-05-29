@@ -58,6 +58,13 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         margin: 0 20px;
       }
 
+      iron-selector{
+        letter-spacing: 1.3px;
+      }
+      a.textMenu{
+        margin-top:5px;
+      }
+
       .drawer-list a {
         display: block;
         padding: 0 16px;
@@ -118,6 +125,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
       }
       app-toolbar.menu{
         background-color:#f47a20;
+        letter-spacing: 1.3px;
       }
       .fondoDeTres{
         left:55px;
@@ -138,7 +146,6 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         text-transform: capitalize;
 
         height: 45px;
-        width: 113px;
         float: right;
         position: relative;
         padding:5px;
@@ -147,12 +154,13 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 
       div.card{
         margin: 24px;
-        padding: 60px;
+        padding: 50px;
+        padding-bottom:20px;
         color: #757575;
         border-radius: 5px;
         background-color: #fff;
 
-        height:280px;
+        min-height:280px;
         width: 63%;
         display: block;
 
@@ -162,8 +170,10 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         margin-right: auto;
 
         box-shadow: -4px 7px 14px 8px rgba(249,241,247,0.89);
-      }
+        z-index: 2;
 
+      }
+  
       .imagenRegalo{
         height:20px;
         margin-right:6px;
@@ -176,6 +186,58 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         --paper-input-container-input-color: black;
         --paper-input-container-invalid-color:#b26aac;
       }
+
+       paper-dialog.regisCard{
+        z-index: 6;
+
+        margin: 24px;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 40px;
+        padding-right: 40px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+
+        width: 85%;
+        min-height:550px;
+
+        top:90px;
+        margin-left:6%;
+        margin-right: auto;
+        position:absolute;
+
+        box-shadow: -4px 7px 14px 8px rgba(249,241,247,0.89);
+       }
+
+      paper-button.buttonLink{
+          border-width: 0px;
+          background-color: transparent;
+          color: #838383;
+          cursor: pointer;
+
+          text-transform: capitalize;
+
+          --paper-button-ink-color:transparent;
+          --paper-input-container-underline{
+            display: inline;
+            color:#838383;
+          }
+
+          letter-spacing: 0.3px;
+
+          position: relative;
+          margin-left: -7px;
+        }
+
+        paper-button.buttonLink:hover{
+          color:#b26aac;
+          font-weight: 430;
+        }
+        .txtRegis{
+          font-size: 13px;
+          margin-top: 70px;
+        }
 
     </style>
   </template>

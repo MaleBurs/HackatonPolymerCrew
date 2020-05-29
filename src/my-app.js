@@ -28,8 +28,8 @@
  import './shared-styles.js';
  import '@polymer/app-storage/app-localstorage/app-localstorage-document.js';
  import '@polymer/paper-dialog/paper-dialog.js';
- import '@polymer/neon-animation/animations/scale-up-animation.js';
- import '@polymer/neon-animation/animations/fade-out-animation.js';
+ //import '@polymer/neon-animation/animations/scale-up-animation.js';
+ //import '@polymer/neon-animation/animations/fade-out-animation.js';
  // Gesture events like tap and track generated from touch will not be
  // preventable, allowing for better scrolling performance.
  setPassiveTouchGestures(true);
@@ -63,21 +63,18 @@
            <app-toolbar class="menu">Menu</app-toolbar>
            <template is=dom-if if='{{isLoggedIn}}'>
            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-             <a class="textMenu" name="view1" href="[[rootPath]]view1">3Deseos</a>
-             <a class="textMenu" name="regalar" href="[[rootPath]]regalar">Regalar</a>
+             <a class="textMenu" name="view1" href="[[rootPath]]view1">Quienes somos</a>
              <a class="textMenu" name="miPerfil" href="[[rootPath]]miPerfil">Mi Perfil</a>
+             <a class="textMenu" name="Arma tu caja magica" href="[[rootPath]]regalar">Regalar</a>
            </iron-selector>
            </template>
            <template is=dom-if if='{{!isLoggedIn}}'>
              <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-               <a class="textMenu" name="view1" href="[[rootPath]]view1">3Deseos</a>
+               <a class="textMenu" name="view1" href="[[rootPath]]view1">Quienes somos</a>
                <a class="textMenu" name="login" href="[[rootPath]]login">Ingresar</a>
            </template>
            <img class="fondoDeTres" src="./images/background.png">
          </app-drawer>
-
-
-
 
          <!-- Main content -->
          <app-header-layout has-scrolling-region="">
