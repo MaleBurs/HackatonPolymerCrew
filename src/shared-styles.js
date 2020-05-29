@@ -47,6 +47,8 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 
         text-transform: uppercase;
         letter-spacing: 1.7px;
+        
+        height: 62px;
       
       }
 
@@ -200,7 +202,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         background-color: #fff;
 
         width: 85%;
-        min-height:550px;
+        min-height:500px;
 
         top:90px;
         margin-left:6%;
