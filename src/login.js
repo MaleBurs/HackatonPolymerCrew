@@ -69,7 +69,7 @@ class MyLogin extends PolymerElement {
         <br>
         <paper-button raised class="buttonLogin" on-tap='_register'><img class="imagenRegalo" src="./images/celebration.png"/>Registrarse</paper-button>
         <paper-dialog class="errorCard" id=errorDialog>Los datos ingresados no son correctos.</paper-dialog>
-        <div class="txtRegis">¿Ya eres miembro?<paper-button class="buttonLink" on-tap='_closeRegisterDialog'>Iniciar Sesión</paper-button></div> 
+        <div class="txtRegis">¿Ya eres miembro?<paper-button class="buttonLink" on-tap='_closeRegisterDialog'>Iniciar Sesión</paper-button></div>
       </paper-dialog>
 
       <div class="card">
@@ -81,7 +81,7 @@ class MyLogin extends PolymerElement {
         </paper-input>
         <br><br>
         <paper-button raised class="buttonLogin" on-tap='submit'><img class="imagenRegalo" src="./images/present.png"/>Ingresar</paper-button>
-        <div class="txtRegis">¿Todavía no tienes cuenta? <paper-button class="buttonLink" on-tap='_openRegisterDialog'>Registrarse</paper-button></div> 
+        <div class="txtRegis">¿Todavía no tienes cuenta? <paper-button class="buttonLink" on-tap='_openRegisterDialog'>Registrarse</paper-button></div>
 
       </div>
     `;
@@ -89,6 +89,8 @@ class MyLogin extends PolymerElement {
 
   static get properties() {
     return {
+      username:String,
+      password:String,
       NewUsername:String,
       NewPassword:String,
       NewPasswordConfirm:String
@@ -109,6 +111,7 @@ class MyLogin extends PolymerElement {
           if (xhr.readyState === 4 && xhr.status === 200) {
               var reply = JSON.parse(xhr.responseText);
               that.set('isLoggedIn', reply);
+              if (reply==false) that._openErrorDialog();
           }
       };
       var data = JSON.stringify({request});
@@ -145,6 +148,10 @@ class MyLogin extends PolymerElement {
 
       }
       this.$.errorDialog.open();
+  }
+
+  _openErrorDialog(){
+    this.$.errorDialog.open();
   }
 
   _closeConfirmDialog(){
