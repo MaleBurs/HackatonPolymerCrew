@@ -146,7 +146,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         font-weight: 380;
         font-size: 15px;
         text-transform: capitalize;
-
+        
         height: 45px;
         float: right;
         position: relative;
@@ -156,13 +156,13 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
 
       div.card{
         margin: 24px;
-        padding: 50px;
+        padding: 37px;
         padding-bottom:20px;
         color: #757575;
         border-radius: 5px;
         background-color: #fff;
 
-        min-height:280px;
+        //min-height:280px;
         width: 63%;
         display: block;
 
